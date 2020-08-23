@@ -1,0 +1,95 @@
+<h1>引入圖片</h1>
+
+<img [src]="picUrl" style="width:150px" alt="" srcset="">
+
+<h1>循環數據 顯示數據的索引(key)</h1>
+
+<ul>
+  <li *ngFor="let item of list;let key=index">
+    {{key}}--{{item.title}}
+  </li>
+</ul>
+
+<h1>條件判斷語句 *ngIf</h1>
+
+<div *ngIf="flag">
+  <img src="assets/images/category.svg" alt="" srcset="">
+</div>
+
+<div *ngIf="!flag">
+  <img src="assets/images/category_active.svg" alt="" srcset="">
+</div>
+
+<ul>
+  <li *ngFor="let item of list;let key=index">
+    <span *ngIf="key==1" class="red">{{key}}--{{item.title}}</span>
+    <span *ngIf="key!=1">{{key}}--{{item.title}}</span>  
+  </li>
+</ul>
+
+<hr>
+
+<h1>條件判斷語句 *ngswitch</h1>
+
+<span [ngSwitch]="orderStatus">
+<p *ngSwitchCase="1">
+  表示已經支付
+</p>
+<p *ngSwitchCase="2">
+  支付且確認定單
+</p>
+<p *ngSwitchCase="3">
+  表示已發貨
+</p>
+<p *ngSwitchCase="4">
+  表示已經收貨
+</p>
+<p *ngSwitchDefault>
+  無效
+</p>
+</span>
+
+<hr>
+
+<h1>屬性[ngClass]、[ngStyle]</h1>
+
+<div class="red">
+  ngClass演示 (不建議使用DOM來改變CLASS)
+</div>
+
+<div [ngClass]="{red:true}">
+  ngClass演示 (不建議使用DOM來改變CLASS)
+</div>
+
+<div [ngClass]="{red:!flag}">
+  ngClass演示 (不建議使用DOM來改變CLASS)
+</div>
+<br>
+<strong>循環陣列，讓陣列的第一個元素的樣式為red</strong>
+
+<ul>
+  <li *ngFor="let item of list;let key=index" [ngClass]="{'red': key==0}">
+    {{key}}---{{item.title}}
+  </li>
+</ul>
+
+<p [ngStyle]="{'color': 'red'}">111111111111111</p>
+
+<p [ngStyle]="{'color': attr}">111111111111111</p>
+
+<h1>管道</h1>
+<h2>{{today | date:'yyyy-MM-dd HH:mm:ss'}}</h2>
+
+<h1>事件</h1>
+
+<button (click)="run()">執行事件</button>
+<br>
+<button (click)="getData()">獲取數據</button>
+<br>
+<strong>{{list[0].title}}</strong>
+<button (click)="setData()">改變數據</button>
+
+<h1>表單事件 事件物件</h1>
+
+<input type="text" (keydown)="keyDown()">
+
